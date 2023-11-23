@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
@@ -22,5 +23,12 @@ class Product extends Model
     public function brand(): HasOne
     {
         return $this->hasOne(Brand::class);
+    }
+
+    public function characteristics(): BelongsToMany
+    {
+        return $this->belongsToMany(Characteristic::class,'products_characteristics')
+            ->using(ProductCharacteristic::class)
+            ->withPivot('value');
     }
 }
