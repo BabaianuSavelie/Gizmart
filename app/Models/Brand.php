@@ -10,4 +10,7 @@ class Brand extends Model
 {
     use HasFactory;
     use HasUuids;
+
+    protected $primaryKey = 'id';
+    protected $fillable = ['name'];
 }
