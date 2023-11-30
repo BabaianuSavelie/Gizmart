@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('name');
+
+
+
             $table->timestamps();
             $table->index('id');
         });

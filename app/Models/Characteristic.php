@@ -11,4 +11,11 @@ class Characteristic extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = ['name','dataType'];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_characteristics')
+            ->using(ProductCharacteristic::class)
+            ->withPivot('value');
+    }
 }
